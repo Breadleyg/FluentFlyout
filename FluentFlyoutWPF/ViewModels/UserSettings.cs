@@ -329,6 +329,12 @@ public partial class UserSettings : ObservableObject
     public partial int TaskbarWidgetSelectedMonitor { get; set; }
 
     /// <summary>
+    /// If true the taskbar widget will default to the main display automatically
+    /// </summary>
+    [ObservableProperty]
+    public partial bool TaskbarWidgetDefaultToMainDisplay { get; set; }
+
+    /// <summary>
     /// Gets or sets the position of the taskbar widget, represented as an integer value.
     /// 0: Left, 1: Center, 2: Right
     /// </summary>
@@ -551,6 +557,7 @@ public partial class UserSettings : ObservableObject
         LockKeysAcrylicWindowEnabled = true;
         TaskbarWidgetEnabled = false;
         TaskbarWidgetSelectedMonitor = 0;
+        TaskbarWidgetDefaultToMainDisplay = false;
         TaskbarWidgetPosition = 0;
         TaskbarWidgetPadding = true;
         TaskbarWidgetManualPadding = 0;

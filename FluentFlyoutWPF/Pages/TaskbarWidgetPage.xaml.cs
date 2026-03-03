@@ -29,6 +29,13 @@ public partial class TaskbarWidgetPage : Page
         MonitorUtil.UpdateMonitorList(
             TaskbarWidgetSelectedMonitorComboBox,
             () => SettingsManager.Current.TaskbarWidgetSelectedMonitor,
-            value => SettingsManager.Current.TaskbarWidgetSelectedMonitor = value);
+            value => SettingsManager.Current.TaskbarWidgetSelectedMonitor = value,
+            () => SettingsManager.Current.TaskbarWidgetDefaultToMainDisplay);
+    }
+
+    private void DefaultToMainDisplayCheckbox_Changed(object sender, RoutedEventArgs e)
+    {
+        // Refresh the monitor list so the selection respects the "default to main" flag
+        UpdateMonitorList();
     }
 }

@@ -109,7 +109,7 @@ public static class MonitorUtil
         return "Unknown Monitor";
     }
 
-    public static void UpdateMonitorList(ComboBox comboBox, Func<int> getSelectedIndex, Action<int> setSelectedIndex)
+    public static void UpdateMonitorList(ComboBox comboBox, Func<int> getSelectedIndex, Action<int> setSelectedIndex, Func<bool>? getDefaultToMain = null)
     {
         var monitors = GetMonitors();
         comboBox.Items.Clear();
@@ -118,7 +118,8 @@ public static class MonitorUtil
 
         bool resetToPrimary =
             savedIndex >= monitors.Count ||
-            savedIndex < 0;
+            savedIndex < 0 ||
+            (getDefaultToMain != null && getDefaultToMain());
 
         int selectedMonitor = savedIndex;
 
